@@ -223,7 +223,9 @@ jobs:
           mkdir -p bmq/logs
           mkdir -p bmq/storage/archive
           ./blazingmq_artifacts/bin/bmqbrkr.tsk ./tests/broker-config &
+          BROKER_PID=$!
           (sleep 5; make coverage-install && make coverage)
+          kill $BROKER_PID
       - name: Output code coverage summary
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
