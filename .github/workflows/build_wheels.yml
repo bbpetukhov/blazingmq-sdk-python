@@ -107,10 +107,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-13]
+        os: [macos-14]
         cibw_python:
           ["cp37", "cp38", "cp39", "cp310", "cp311", "cp312"]
-        cibw_arch: ["x86_64"]
+        cibw_arch: ["x86_64", "arm64"]
 
     steps:
       - uses: actions/download-artifact@v4
@@ -141,8 +141,8 @@ jobs:
           CIBW_PRERELEASE_PYTHONS: True
           CIBW_TEST_COMMAND: python3 -m pytest {project}/tests/unit
           CIBW_TEST_REQUIRES: pytest mock pkgconfig
-          MACOSX_DEPLOYMENT_TARGET: "13.0"
-          MACOS_DEPLOYMENT_TARGET: "13.0"
+          MACOSX_DEPLOYMENT_TARGET: "14.0"
+          MACOS_DEPLOYMENT_TARGET: "14.0"
           SYSTEM_VERSION_COMPAT: 0
 
       - uses: actions/upload-artifact@v4
