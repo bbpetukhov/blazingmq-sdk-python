@@ -177,6 +177,7 @@ jobs:
         env:
           PYTHON: ./venv/bin/python
         run: |
+          clang-format --version
           make lint
       - name: Build docs
         run: |
