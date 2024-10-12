@@ -228,3 +228,17 @@ jobs:
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
           filename: coverage*.xml
+
+      - name: Compress collected broker logs
+        # if: failure()
+        #working-directory: /tmp/bmq-broker
+        run: tar -zcvf broker_logs.tar.gz ./bmq/logs
+        # /tmp/bmq-broker/bmq-broker-java-it*
+
+      - name: Upload broker logs as artifacts
+        # if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: broker_logs
+          path: ./broker_logs.tar.gz
+          retention-days: 5
