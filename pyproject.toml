@@ -1,8 +1,7 @@
 [build-system]
 
 requires = ['setuptools>=39.2.0',
-            'Cython>=0.28.4, <3; python_version < "3.8"',
-            'Cython >= 3, <4; python_version >= "3.8"',
+            'Cython >= 3, <4; python_version >= "3.9"',
             'wheel>=0.31.0',
             'pkgconfig>1.5.0']
 
@@ -15,7 +14,7 @@ filename    = "CHANGELOG.md"
 directory   = "news"
 
 [tool.cibuildwheel]
-build = ["cp38-*", "cp39-*", "cp310-*", "cp311-*"]
+build = ["cp39-*", "cp310-*", "cp311-*", "cp312-*"]
 skip = "*-musllinux_*"
 manylinux-x86_64-image = "manylinux2014"
 manylinux-i686-image = "manylinux2014"
