@@ -4,7 +4,7 @@ on:
   push:
   pull_request:
     branches:
-      - main
+      - "**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -234,3 +234,8 @@ jobs:
           path: ./bmq/logs
           retention-days: 5
           compression-level: 9
+      - name: Verify Core Dumps config
+        run: |
+          uname -a
+          ulimit
+          cat /proc/sys/kernel/core_pattern
